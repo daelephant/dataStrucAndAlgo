@@ -1,8 +1,8 @@
 /**
  * @Author: yin
- * @Description:selection_test
+ * @Description:insertionSort_test
  * @Version: 1.0.0
- * @Time : 2020-08-15 14:38
+ * @Time : 2020-08-14 19:20
  */
 package sort
 
@@ -11,10 +11,11 @@ import (
 	"testing"
 )
 
-func TestSelect(t *testing.T) {
+// go test -v -run TestInsert
+func TestInsert(t *testing.T) {
 	nums := []int{1, 8, 3, 5, 2}
 
-	SelectV1(nums)
+	InsertV1(nums)
 
 	expected := []int{1, 2, 3, 5, 8}
 	if !reflect.DeepEqual(expected, nums) {
@@ -23,8 +24,8 @@ func TestSelect(t *testing.T) {
 	t.Logf("The expected greeting is %v.\n", expected)
 }
 
-func TestSelectSort(t *testing.T) {
+func TestInsertionSort(t *testing.T) {
 	s := []int{1, 8, 3, 5, 2}
-	SelectSort(s)
+	InsertionSort(s)
 	t.Log(s)
 }
