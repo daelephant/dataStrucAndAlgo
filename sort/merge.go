@@ -43,8 +43,8 @@ func merge(arr []int, l int, mid int, r int) {
 	temp := make([]int, r-l+1) //l是偏移量
 	copy(temp, arr[l:r+1])
 	//每轮循环为arr[k]赋值 在合法区间[l,r]前闭后闭
-	for k := l; k <= r; k++ { //            左半部分越界，元素已用完，直接取右半部分
-		if i > mid {
+	for k := l; k <= r; k++ {
+		if i > mid { //            左半部分越界，元素已用完，直接取右半部分
 			arr[k] = temp[j-l] //l是偏移量 temp取值都要偏移l
 			j++
 		} else if j > r { //            右半部分越界，元素已用完，直接取左半部分
@@ -59,3 +59,5 @@ func merge(arr []int, l int, mid int, r int) {
 		}
 	}
 }
+
+//归并 递归l>=r终止,选取mid  merge 先备份temp空间 在[l,r]上对原数组arr[k]赋值。for k，if elseif

@@ -12,7 +12,7 @@ func QuickSort3(arr []int) {
 	quickSort3(arr, 0, len(arr)-1)
 }
 
-// 三路快速排序  优化 把等于v的值放到紧邻左侧
+// 三路快速排序  优化 把等于v的值放到紧邻左侧 详细看 array 处的三路快排实现
 func quickSort3(arr []int, l int, r int) {
 	if l >= r {
 		return
@@ -39,4 +39,40 @@ func quickSort3(arr []int, l int, r int) {
 	//arr[l, lt - 1] < v, arr[lt, gt - 1] == v, arr[gt, r] > v
 	quickSort3(arr, l, lt-1)
 	quickSort3(arr, gt, r)
+}
+
+//简化： 三路快排
+
+func Sort3(nums []int) {
+	quickSortV3(nums, 0, len(nums)-1)
+}
+
+func quickSortV3(nums []int, l int, r int) {
+	if l >= r {
+		return
+	}
+	//随机化 l
+	p := l + rand.Intn(r-l+1)
+	nums[p], nums[l] = nums[l], nums[p]
+
+	lt := l
+	i := l + 1
+	gt := r + 1
+	//循环不变量 //arr[l, lt] < v, arr[lt, gt - 1] == v, arr[gt, r] > v
+	for i < gt {
+		if nums[i] == nums[l] {
+			i++
+		} else if nums[i] > nums[l] {
+			gt--
+			nums[i], nums[gt] = nums[gt], nums[i]
+		} else {
+			lt++
+			nums[i], nums[lt] = nums[lt], nums[i]
+			i++
+		}
+	}
+	nums[l], nums[lt] = nums[lt], nums[l]
+
+	quickSortV3(nums, l, lt)
+	quickSortV3(nums, gt, r)
 }

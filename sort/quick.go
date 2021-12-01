@@ -32,9 +32,9 @@ func quickSort(arr []int, l int, r int) {
 		return
 	}
 
-	//p := partitionV1(arr, l, r)
+	p := partitionV1(arr, l, r)
 	//p := partitionV1Random(arr, l, r)
-	p := partitionV2(arr, l, r)
+	//p := partitionV2(arr, l, r)
 	quickSort(arr, l, p-1)
 	quickSort(arr, p+1, r)
 }
@@ -82,7 +82,7 @@ func partitionV2(arr []int, l int, r int) int {
 
 	//      arr[l+1, i-1] <=v; arr[j+1, r] >=v //        当存在相同元素时，较平均分布在划分点两侧
 	i, j := l+1, r
-	for { //i和j往中间夹逼
+	for { //i和j指针对撞
 		for i <= j && arr[i] < arr[l] { //保证不越界
 			i++
 		}
@@ -92,7 +92,7 @@ func partitionV2(arr []int, l int, r int) int {
 		if i >= j {
 			break
 		}
-		arr[i], arr[j] = arr[j], arr[i] //交换完后继续 夹逼
+		arr[i], arr[j] = arr[j], arr[i] //交换完后继续  找到arr[i]是>arr[l]区、找到arr[j]是<arr[l]区互换位置 继续对撞
 		i++
 		j--
 	}

@@ -13,11 +13,12 @@ import (
 
 // go test -v -run Test
 func TestLeetcode3(t *testing.T) {
-	s := "a"
+	s := "abcabcbb"
 
-	get := LengthOfLongestSubstring(s)
+	//get := LengthOfLongestSubstring(s)
+	get := LengthOfLongestSubstringV1(s)
 
-	expected := 2
+	expected := 3
 	if !reflect.DeepEqual(expected, get) {
 		t.Errorf("greeting %+v is not the expected. (%v)", get, expected)
 	}
