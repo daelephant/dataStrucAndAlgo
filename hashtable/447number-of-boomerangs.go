@@ -7,6 +7,8 @@
 
 package hashtable
 
+//todo step5 447. 回旋镖的数量 ！！
+
 // 447. Number of Boomerangs
 // https://leetcode.com/problems/number-of-boomerangs/description/
 // 时间复杂度: O(n^2)

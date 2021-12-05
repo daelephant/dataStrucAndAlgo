@@ -7,6 +7,8 @@
 
 package leetcode
 
+//todo step2 链表 设立链表的虚拟头结点 Remove Linked List Elements
+
 // 203. Remove Linked List Elements
 // https://leetcode.com/problems/remove-linked-list-elements/description/
 // 使用虚拟头结点
@@ -66,4 +68,19 @@ func removeElementsV1(head *ListNode, val int) *ListNode {
 		}
 	}
 	return head
+}
+
+//
+func removeElementsT(head *ListNode, val int) *ListNode {
+	dummyHead := &ListNode{0, head}
+	cur := dummyHead
+	for cur.Next != nil {
+		if cur.Next.Val == val {
+			delNode := cur.Next
+			cur.Next = delNode.Next
+		} else {
+			cur = cur.Next
+		}
+	}
+	return dummyHead.Next
 }

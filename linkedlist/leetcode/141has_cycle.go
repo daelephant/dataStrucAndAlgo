@@ -45,3 +45,15 @@ func hasCycle(head *ListNode) bool {
 	}
 	return false
 }
+
+func hasCycleT(head *ListNode) bool {
+	s, f := head, head
+	for f != nil && f.Next != nil {
+		s = s.Next
+		f = f.Next.Next
+		if s.Val == f.Val {
+			return true
+		}
+	}
+	return false
+}

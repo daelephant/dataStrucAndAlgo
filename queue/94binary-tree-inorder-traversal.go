@@ -7,6 +7,8 @@
 
 package queue
 
+//todo step2 二叉树的中序遍历2
+
 //****************     递归   *********************
 var res2 []int
 
@@ -81,4 +83,56 @@ func inorderTraversalV2(root *TreeNode) []int {
 		}
 	}
 	return res
+}
+
+//递归遍历二叉树
+
+//var res []int
+//
+//func traversalT(root *TreeNode) []int {
+//	res = []int{}
+//	travel(root)
+//	return res
+//}
+//
+//func travel(root *TreeNode) {
+//	if root == nil {
+//		return
+//	}
+//	//前序遍历
+//	res = append(res, root.Val)
+//	travel(root.Left)
+//	travel(root.Right)
+//}
+
+//非递归遍历二叉树 模拟系统栈
+type command struct {
+	S    string
+	Node *TreeNode
+}
+
+func preorderTraversalT(root *TreeNode) []int {
+	var result []int
+	if root == nil {
+		return result
+	}
+	stack := []command{{"go", root}}
+	for len(stack) != 0 {
+		//弹出栈
+		c := stack[len(stack)-1]
+		stack = stack[:len(stack)-1]
+
+		if c.S == "print" {
+			result = append(result, c.Node.Val)
+		} else {
+			if c.Node.Right != nil {
+				stack = append(stack, command{"go", c.Node.Right})
+			}
+			if c.Node.Left != nil {
+				stack = append(stack, command{"go", c.Node.Left})
+			}
+			stack = append(stack, command{"print", c.Node}) //前序
+		}
+	}
+	return result
 }

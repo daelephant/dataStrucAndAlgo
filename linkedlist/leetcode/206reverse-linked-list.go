@@ -7,6 +7,8 @@
 
 package leetcode
 
+//todo step1 链表 Reverse Linked List
+
 // 206. Reverse Linked List
 // https://leetcode.com/problems/reverse-linked-list/description/
 // 时间复杂度: O(n)
@@ -46,5 +48,33 @@ func reverseListV1(head *ListNode) *ListNode {
 	head.Next.Next = head
 	head.Next = nil
 
+	return rHead
+}
+
+func reverseListT(head *ListNode) *ListNode {
+	var pre *ListNode
+	cur := head
+	for cur != nil {
+		next := cur.Next //定义next
+
+		cur.Next = pre //转换指针
+		//前移
+		pre = cur
+		cur = next
+	}
+	return pre
+}
+
+//递归
+func reverseListT1(head *ListNode) *ListNode {
+
+	//终止
+	if head == nil || head.Next == nil {
+		return head
+	}
+
+	rHead := reverseListT1(head.Next)
+	head.Next.Next = head
+	head.Next = nil
 	return rHead
 }

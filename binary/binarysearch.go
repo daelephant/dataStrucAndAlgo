@@ -12,6 +12,7 @@ package binary
 
 func SearchR(data []int, e int) int {
 	return search(data, 0, len(data)-1, e)
+	//return binaryS(data, 0, len(data)-1, e)
 }
 
 func search(data []int, l int, r int, target int) int {

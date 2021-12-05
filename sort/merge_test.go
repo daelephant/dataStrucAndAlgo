@@ -15,7 +15,8 @@ import (
 func TestMerge(t *testing.T) {
 	nums := []int{1, 8, 3, 5, 2}
 
-	MergeSortV1(nums)
+	//MergeSortV1(nums)
+	//MSort(nums)
 
 	expected := []int{1, 2, 3, 5, 8}
 	if !reflect.DeepEqual(expected, nums) {

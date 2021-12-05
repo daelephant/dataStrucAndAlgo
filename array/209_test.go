@@ -15,7 +15,8 @@ func TestLeetcode209(t *testing.T) {
 	a := []int{2, 3, 1, 2, 4, 3}
 
 	//v := minSubArrayLenV1(7, a)
-	v := minSubArrayLenV2(7, a)
+	//v := minSubArrayLenV2(7, a)
+	v := minSubArrayLenT1(7, a)
 	expected := 2
 	if !reflect.DeepEqual(expected, v) {
 		t.Errorf("greeting %+v is not the expected. (%v)", v, expected)

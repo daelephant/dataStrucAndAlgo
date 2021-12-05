@@ -6,6 +6,7 @@
  */
 package array
 
+// todo 1
 // 283. Move Zeroes
 // https://leetcode.com/problems/move-zeroes/description/
 // 时间复杂度: O(n)
@@ -78,5 +79,32 @@ func moveZeroesV3(nums []int) {
 				k++
 			}
 		}
+	}
+}
+
+func moveZeroesT(nums []int) {
+	k := 0
+	for i := 0; i < len(nums); i++ {
+		if nums[i] != 0 {
+			if i != k {
+				nums[i], nums[k] = nums[k], nums[i]
+				k++
+			} else {
+				k++
+			}
+		}
+	}
+}
+
+func moveZeroesT1(nums []int) {
+	k := 0
+	for i := 0; i < len(nums); i++ {
+		if nums[i] != 0 {
+			nums[k] = nums[i]
+			k++
+		}
+	}
+	for i := k; i < len(nums); i++ {
+		nums[i] = 0
 	}
 }

@@ -7,6 +7,8 @@
 
 package queue
 
+//todo step1 20. 有效的括号
+
 // 20. Valid Parentheses
 // https://leetcode.com/problems/valid-parentheses/description/
 // 时间复杂度: O(n)
@@ -42,6 +44,30 @@ func isValidV1(s string) bool {
 		return false
 	}
 	return true
+}
+
+func isValidV2(s string) bool {
+	var stack []byte
+	for _, v := range s {
+		if v == '(' || v == '[' || v == '{' {
+			stack = append(stack, byte(v))
+		} else {
+			if len(stack) == 0 { //important
+				return false
+			}
+			//弹出元素 对比
+			m := stack[len(stack)-1]
+			stack = stack[:len(stack)-1]
+			if m == '(' && v != ')' {
+				return false
+			} else if m == '[' && v != ']' {
+				return false
+			} else if m == '{' && v != '}' {
+				return false
+			}
+		}
+	}
+	return len(stack) == 0
 }
 
 func isValid(s string) bool {

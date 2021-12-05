@@ -7,7 +7,6 @@
 package sort
 
 import (
-	"algo/array"
 	"reflect"
 	"testing"
 )
@@ -17,8 +16,10 @@ func TestQuick(t *testing.T) {
 	nums := []int{1, 8, 3, 5, 2}
 
 	//QuickSort(nums)
+	//quickTest(nums)
+	quick3Test(nums) //12-2
 	//QuickSort3(nums)
-	array.Sort3(nums)
+	//array.Sort3(nums)
 
 	expected := []int{1, 2, 3, 5, 8}
 	if !reflect.DeepEqual(expected, nums) {

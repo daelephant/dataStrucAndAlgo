@@ -6,6 +6,9 @@
  * @Time : 2021/11/26 22:43
 */
 
+//在滑动窗口中做记录
+//3. 无重复字符的最长子串
+
 package array
 
 func LengthOfLongestSubstring(s string) int {
@@ -54,6 +57,37 @@ func LengthOfLongestSubstringV1(s string) int {
 func max(res int, i int) int {
 	if i > res {
 		return i
+	}
+	return res
+}
+
+//func lengthOfLongestSubstring(s string) int {
+//	left, right := 0, 0
+//	freq := make([]byte, 256)
+//	res := 0
+//
+//	for right < len(s) {
+//		if freq[s[right]] == 0 {
+//			freq[s[right]]++
+//		}
+//		right++
+//
+//	}
+//}
+
+func lengthOfLongestSubstring(s string) int {
+	l, r := 0, -1
+	res := 0
+	freq := make([]byte, 256)
+	for l < len(s) {
+		if r+1 <= len(s) && freq[s[r+1]] == 0 {
+			freq[s[r+1]]++
+			r++
+		} else {
+			freq[s[l]]--
+			l++
+		}
+		res = max(res, r-l+1)
 	}
 	return res
 }

@@ -95,3 +95,21 @@ func quickSortV3(nums []int, l int, r int) {
 	quickSortV3(nums, l, lt)
 	quickSortV3(nums, gt, r)
 }
+
+func sortColorsT(nums []int) {
+	i := 0
+	lt := -1
+	gt := len(nums)
+	for i < gt {
+		if nums[i] == 2 {
+			gt--
+			nums[i], nums[gt] = nums[gt], nums[i]
+		} else if nums[i] == 1 {
+			i++
+		} else {
+			lt++
+			nums[i], nums[lt] = nums[lt], nums[i]
+			i++
+		}
+	}
+}

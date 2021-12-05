@@ -15,7 +15,8 @@ import (
 func TestInsert(t *testing.T) {
 	nums := []int{1, 8, 3, 5, 2}
 
-	InsertV1(nums)
+	//InsertV1(nums)
+	insertTest(nums)
 
 	expected := []int{1, 2, 3, 5, 8}
 	if !reflect.DeepEqual(expected, nums) {

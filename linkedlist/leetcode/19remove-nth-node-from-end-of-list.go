@@ -7,6 +7,7 @@
 
 package leetcode
 
+//todo 链表与双指针 Remove Nth Node Form End of List
 // 19. Remove Nth Node From End of List
 // https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/
 //
@@ -59,5 +60,25 @@ func removeNthFromEndV1(head *ListNode, n int) *ListNode {
 	del := p.Next
 	p.Next = del.Next
 
+	return dummyHead.Next
+}
+
+//ok
+func removeNthFromEndT(head *ListNode, n int) *ListNode {
+	dummyHead := &ListNode{
+		Val:  0,
+		Next: head,
+	}
+	length := 0
+	cur := dummyHead
+	for cur.Next != nil {
+		length++
+		cur = cur.Next
+	}
+	p := dummyHead
+	for i := 0; i < length-n; i++ {
+		p = p.Next
+	}
+	p.Next = p.Next.Next
 	return dummyHead.Next
 }

@@ -61,3 +61,14 @@ func InsertionSort(a []int) {
 		a[j+1] = value //插入数据
 	}
 }
+
+func insertTest(nums []int) {
+	for i := 0; i < len(nums); i++ {
+		t := nums[i]
+		var j int
+		for j = i; j-1 >= 0 && t < nums[j-1]; j-- {
+			nums[j] = nums[j-1]
+		}
+		nums[j] = t
+	}
+}

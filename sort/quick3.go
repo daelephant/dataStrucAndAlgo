@@ -76,3 +76,32 @@ func quickSortV3(nums []int, l int, r int) {
 	quickSortV3(nums, l, lt)
 	quickSortV3(nums, gt, r)
 }
+
+func quick3Test(nums []int) {
+	quick3(nums, 0, len(nums)-1)
+}
+
+func quick3(nums []int, l int, r int) {
+	if l >= r {
+		return
+	}
+	p := l + rand.Intn(r-l+1)
+	nums[l], nums[p] = nums[p], nums[l]
+	lt := l
+	i := l + 1
+	gt := r + 1
+	for i < gt {
+		if nums[i] == nums[l] {
+			i++
+		} else if nums[i] > nums[l] {
+			gt--
+			nums[gt], nums[i] = nums[i], nums[gt]
+		} else {
+			lt++
+			nums[lt], nums[i] = nums[i], nums[lt]
+			i++
+		}
+	}
+	quick3(nums, l, lt)
+	quick3(nums, gt, r)
+}

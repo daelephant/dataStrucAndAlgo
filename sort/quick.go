@@ -100,3 +100,54 @@ func partitionV2(arr []int, l int, r int) int {
 	arr[l], arr[j] = arr[j], arr[l]
 	return j
 }
+
+//注意 i:= l+1 j:=r
+func quickTest(arr []int) {
+	quickS2(arr, 0, len(arr)-1)
+}
+
+func quickS2(arr []int, l int, r int) {
+	if l >= r {
+		return
+	}
+	p := partitionT1(arr, l, r)
+	quickS2(arr, l, p-1)
+	quickS2(arr, p+1, r)
+}
+
+func partitionT(arr []int, l int, r int) int {
+	p := l + rand.Intn(r-l+1)
+	arr[l], arr[p] = arr[p], arr[l]
+
+	i := l + 1
+	j := r
+	for {
+		for i <= j && arr[i] < arr[l] {
+			i++
+		}
+		for i <= j && arr[j] > arr[l] {
+			j--
+		}
+		if i >= j {
+			break
+		}
+		arr[j], arr[i] = arr[i], arr[j]
+		i++
+		j--
+	}
+	arr[j], arr[l] = arr[l], arr[j]
+	return j
+}
+
+func partitionT1(arr []int, l int, r int) int {
+	//单路
+	i, j := l+1, l
+	for ; i <= r; i++ {
+		if arr[i] < arr[l] {
+			j++
+			arr[i], arr[j] = arr[j], arr[i]
+		}
+	}
+	arr[l], arr[j] = arr[j], arr[l]
+	return j
+}

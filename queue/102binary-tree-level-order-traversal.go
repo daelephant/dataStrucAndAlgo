@@ -65,3 +65,57 @@ func levelOrder(root *TreeNode) [][]int {
 //使用队列
 //队列非空的时候，动态取出队首元素
 //取出队首元素的时候，把队首元素相邻的节点（非空）加入队列。
+
+//递归层序遍历
+var resT [][]int
+
+func levelOrderT1(root *TreeNode) [][]int {
+	if root == nil {
+		return nil
+	}
+	resT = [][]int{}
+	levelO(root, 0)
+	return resT
+}
+
+func levelO(root *TreeNode, level int) {
+	if root == nil {
+		return
+	}
+	if level == len(resT) {
+		resT = append(resT, []int{})
+	}
+	resT[level] = append(resT[level], root.Val)
+	levelO(root.Left, level+1)
+	levelO(root.Right, level+1)
+}
+
+//**************** 递归 *****************
+/*
+var res [][]int
+func levelOrderT1(root *TreeNode) [][]int {
+	if root == nil{
+		return nil
+	}
+	res = make([][]int, 0)
+	dfs(root, 0)
+	return res
+}
+
+func dfs(root *TreeNode, level int){
+	if root == nil{
+		return
+	}
+	if level == len(res){
+		res = append(res, []int{})
+	}
+	res[level] = append(res[level], root.Val)
+	dfs(root.Left, level+1)
+	dfs(root.Right,level+1)
+}
+*/
+
+//作者：zhao-gao-long
+//链接：https://leetcode-cn.com/problems/binary-tree-level-order-traversal/solution/ren-yong-xun-huan-shen-yong-di-gui-by-zhao-gao-lon/
+//来源：力扣（LeetCode）
+//著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
